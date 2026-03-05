@@ -6,12 +6,13 @@ const doc = {
   swagger: "2.0",
   info: {
     title: 'ECOM Auth API',
-    description: 'Authentication API Documentation'
+    description: 'Authentication API Documentation',
+    version: '1.0.0'
   },
 
   host: isProd
     ? 'ecom-he6e.onrender.com'
-    : 'localhost:3001',
+    : `localhost:${process.env.PORT || 3001}`,
 
   schemes: isProd
     ? ['https']
@@ -27,7 +28,7 @@ const doc = {
   }
 };
 
-const outputFile = './swagger-output.json';
+const outputFile = './src/utils/swagger-output.json';
 const routes = ['./src/app.js'];
 
 swaggerAutogen(outputFile, routes, doc);
